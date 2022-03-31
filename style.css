@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    border: none;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Gabriela', serif;
+    line-height: 141.02%;
+    font-weight: 400;
+    font-style: normal;
+}
+
+:root {
+    --font_16: 16px;
+    --font_24: 24px;
+    --font_14: 14px
+}
+
+.greed {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(650px, 1fr));
+    margin: 0 auto;
+    grid-gap: 14px
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .left {
+    display: flex;
+    align-items: center;
+}
+
+header .raight {
+    width: 718px;
+    display: flex;
+    align-items: center;
+    margin-right: 22px;
+    padding: 13px 17px;
+    background: #E7E7E7;
+    border-radius: 10px;
+}
+
+header .raight svg {
+    margin-right: 21px;
+}
+
+header .raight input {
+    width: 100%;
+    background: #E7E7E7;
+}
+
+header img {
+    margin-left: 30px;
+    margin-right: 14px;
+}
+
+header h1 {
+    font-family: 'Gabriela';
+    font-size: var(--font_24);
+}
+
+header button {
+    font-family: 'Inter';
+    padding: 10px 22px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    font-size: var(--font_16);
+    margin-left: 40px;
+    margin-right: 19px;
+    background-color: #1F30C9;
+    border-radius: 9px;
+}
+
+.defolt-wudth {
+    max-width: 1751px;
+    margin: 0 auto;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+}
+
+.item .text {
+    margin-left: 14px;
+}
+
+.item .text p:nth-child(2) {
+    font-size: var(--font_14);
+}
+
+.item .text span {
+    font-size: var(--font_14);
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.item svg {
+    margin-left: 106px;
+}
+
+.item img {
+    border-radius: 12px;
+}
