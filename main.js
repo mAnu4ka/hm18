@@ -32,7 +32,7 @@ filter.onclick = () => {
     }
 }
 
-
+let concorn = 0 
 
 input.onkeyup = () => {
     createarr(search_arr(zar, input, 'name'))
@@ -82,7 +82,10 @@ const createarr = (arr, notfake) => {
             serch_item(items)
         }
     }
-    serch_item()
+    if (concorn == 0) {
+        serch_item()
+        concorn++
+    }
 }
 
 //////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
