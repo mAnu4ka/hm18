@@ -184,12 +184,12 @@ const serch_item = (el) => {
     console.log(local);
     for (const item of zar21) {
         if (`#${item.id}` == local[local.length - 1]) {
-            createarr(item)
+            createarr(zar21)
             title.innerText = item.name
             el.setAttribute('href', `./index.html`)
             local.pop()
             return
-        } else if ('hm18.netlify.app' == local[local.length - 1]) {
+        } else if ('https://cool-dragon-cdc744.netlify.app/' == local[local.length - 1]) {
             createarr(zar21)
         }
     }
