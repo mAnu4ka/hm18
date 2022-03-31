@@ -25,7 +25,7 @@ body {
 
 .greed {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(650px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     margin: 0 auto;
     grid-gap: 14px
 }
@@ -41,6 +41,10 @@ header .left {
     align-items: center;
 }
 
+header .left svg {
+    cursor: pointer;
+}
+
 header .raight {
     width: 718px;
     display: flex;
@@ -53,6 +57,7 @@ header .raight {
 
 header .raight svg {
     margin-right: 21px;
+    cursor: pointer;
 }
 
 header .raight input {
@@ -90,6 +95,8 @@ header button {
 .item {
     display: flex;
     align-items: center;
+    cursor: pointer;
+    color: #000000;
 }
 
 .item .text {
@@ -111,4 +118,97 @@ header button {
 
 .item img {
     border-radius: 12px;
+}
+
+.yes {
+    fill: #000000;
+}
+
+.course-modal {
+    display: none;
+    width: 0px;
+    height: 0px;
+    background-color: white;
+    border-radius: 12px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .2s ease;
+    opacity: 0
+}
+
+.course-modal-mobil form {
+    width: 100%;
+    height: 100%;
+    padding: 56px 97px;
+    grid-gap: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-modal-mobil form h3 {
+    margin-bottom: 32px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 59px;
+    text-align: center;
+}
+
+.course-modal-mobil form input {
+    width: 100%;
+    padding: 19px 25px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+
+.course-modal-mobil form select {
+    width: 100%;
+    padding: 19px 25px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+
+.course-modal-mobil {
+    width: 100%;
+}
+
+.course-modal-mobil form button {
+    width: 100%;
+    padding: 19px 25px;
+    background: #007FFF;
+    color: #FFFFFF;
+    border-radius: 10px;
+
+}
+
+.bg-modal {
+    display: none;
+    opacity: 0;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, .5);
+    transition: .2s ease;
+    backdrop-filter: blur(7px);
+}
+
+.none {
+    display: none;
+}
+
+.bloke {
+    background: #E7E7E7;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+.bloke input {
+    background: #E7E7E7;
+    padding: 10px 10px;
+    border-radius: 10px;
+
 }
