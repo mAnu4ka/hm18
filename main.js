@@ -3,8 +3,11 @@ import get_year from './js/newyear.js'
 import get_sord_arr_minuse from './js/sordplus.js'
 import getRandomInRange from './js/randomnum.js'
 import search_arr from './js/search.js'
+import post from './js/post.js'
+import search_year from './js/search_by_arr.js'
 
 get_arr(100, 10, 1200, 'https://api.instantwebtools.net/v1/airlines/').then(results => createarr(results, 'notfake'));
+
 let zar
 let zar21
 let main = document.querySelector('main')
@@ -15,7 +18,8 @@ let body = document.querySelector('body')
 let form = document.querySelector('form')
 let input = document.querySelector('.search')
 let div = document.querySelector('.div')
-let el = div.children
+let el = div.children[0]
+
 filter.onclick = () => {
     if (filter.getAttribute('class') == 'yes') {
         filter.classList.add('no')
@@ -27,15 +31,17 @@ filter.onclick = () => {
         filter.classList.add('yes')
         div.classList.add('bloke')
         div.classList.remove('none')
-
-        createarr(search_arr(zar, el[0], 'established'))
+        console.log(el);
     }
 }
 
-let concorn = 0
+el.onkeyup = () => {
+    console.log('работает');
+    createarr(search_year(zar, el))
+}
 
 input.onkeyup = () => {
-    createarr(search_arr(zar, input, 'name'))
+    createarr(search_arr(zar, input))
 }
 
 const createarr = (arr, notfake) => {
@@ -51,12 +57,12 @@ const createarr = (arr, notfake) => {
         zar = zar21
     } else if (notfake == 'notfake') {
         zar = zar21
-    } else if (input.value.length == 0 && el[0].value.length == 0) {
+    } else if (input.value.length == 0 && el.value.length == 0) {
         zar = zar21
     }
 
     for (const item of zar) {
-        main.innerHTML += `<a data-input="6" data-but data-with='691px' data-haight='691px' class="item" id='${item.id}' href="./indexid.html#${item.id}"> <img src="./img/454-68x68.jpg">
+        main.innerHTML += `<div data-input="6" data-but data-with='691px' data-haight='691px' class="item but" id='${item.id}'> <img src="./img/454-68x68.jpg">
         <div class="text">
         <p>${item.name}</p>
         <p>${item.established}-${get_year()}</p>
@@ -73,7 +79,7 @@ const createarr = (arr, notfake) => {
         d="M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z"
         stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
-        </a>`
+        </div>`
     }
     let items = document.querySelectorAll('.item')
     for (const item of items) {
@@ -90,13 +96,15 @@ const createarr = (arr, notfake) => {
 
 let arr_plesholder_for_inp = ['Название', 'Страна', 'Ссылка но фото', 'Слоган', 'Откуда - Куда', 'Веб-сайт', 'Когда было создано (год)']
 let arr_name_for_inp = ['name', 'country', 'logo', 'slogan', 'head_quaters', 'website', 'established']
-
-const createmobile = (input, text = 'изменить', cen, finde) => {
+let arr_sad
+const createmobile = (input, text, cen, finde) => {
     form.innerHTML = ' '
-    let arr_sad = [finde.name, finde.country, finde.logo, finde.slogan, finde.head_quaters, finde.website, finde.established]
     let inputmobail
     let h1mobil = document.createElement('h3')
     let buton = document.createElement('button')
+    if (cen == 'cenche') {
+        text = 'изменить'
+    }
     h1mobil.innerText = text
     buton.classList.add('create')
     buton.innerText = text
@@ -106,11 +114,11 @@ const createmobile = (input, text = 'изменить', cen, finde) => {
         inputmobail.setAttribute('type', 'text')
         inputmobail.setAttribute('placeholder', arr_plesholder_for_inp[i])
         inputmobail.setAttribute('name', arr_name_for_inp[i])
-        
-        if (cen = 'cenche') {
+        console.log(cen);
+        if (cen == 'cenche') {
+            arr_sad = [finde.name, finde.country, finde.logo, finde.slogan, finde.head_quaters, finde.website, finde.established]
             inputmobail.value = arr_sad[i]
         }
-
         form.append(inputmobail)
     }
     form.append(buton)
@@ -130,7 +138,7 @@ const closeModal = () => {
     }, 100);
 }
 
-const showModal = (width, haight, input, text, finde) => {
+const showModal = (width, haight, input, text, cen, finde) => {
     bg_modal.style.display = "block"
     course_modal.style.display = "flex"
     body.style.overflow = 'hidden'
@@ -145,7 +153,7 @@ const showModal = (width, haight, input, text, finde) => {
 }
 
 const anim = (cen, finde) => {
-    let butns = document.querySelectorAll('button[data-but]')
+    let butns = document.querySelectorAll('.but')
     for (const but of butns) {
         but.onclick = () => {
             let valueinnrTEXT = but.innerText
@@ -171,17 +179,11 @@ const REGEX = () => {
         for (const but of butensclose) {
             but.onclick = () => {
                 closeModal()
-                axios.post('', Create_New_Task)
-                    .then(function (response) {
-                        console.log(response);
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
+                post('https://api.instantwebtools.net/v1/airlines/', Create_New_Task)
             }
         }
     }
 }
 
 
-anim([])
+anim('don_t')
