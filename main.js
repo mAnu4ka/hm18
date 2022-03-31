@@ -32,7 +32,7 @@ filter.onclick = () => {
     }
 }
 
-let concorn = 0 
+let concorn = 0
 
 input.onkeyup = () => {
     createarr(search_arr(zar, input, 'name'))
@@ -56,7 +56,7 @@ const createarr = (arr, notfake) => {
     }
 
     for (const item of zar) {
-        main.innerHTML += `<a class="item" id='${item.id}' href="./indexid.html#${item.id}"> <img src="./img/454-68x68.jpg">
+        main.innerHTML += `<a data-input="6" data-but data-with='691px' data-haight='691px' class="item" id='${item.id}' href="./indexid.html#${item.id}"> <img src="./img/454-68x68.jpg">
         <div class="text">
         <p>${item.name}</p>
         <p>${item.established}-${get_year()}</p>
@@ -78,13 +78,10 @@ const createarr = (arr, notfake) => {
     let items = document.querySelectorAll('.item')
     for (const item of items) {
         item.onclick = () => {
-            event.preventDefault()
-            serch_item(items)
+            let id = item.getAttribute('id')
+            let find = zar21.find(item => item.id == id)
+            anim('cenche', find)
         }
-    }
-    if (concorn == 0) {
-        serch_item()
-        concorn++
     }
 }
 
@@ -94,8 +91,9 @@ const createarr = (arr, notfake) => {
 let arr_plesholder_for_inp = ['Название', 'Страна', 'Ссылка но фото', 'Слоган', 'Откуда - Куда', 'Веб-сайт', 'Когда было создано (год)']
 let arr_name_for_inp = ['name', 'country', 'logo', 'slogan', 'head_quaters', 'website', 'established']
 
-const createmobile = (input, text) => {
+const createmobile = (input, text = 'изменить', cen, finde) => {
     form.innerHTML = ' '
+    let arr_sad = [finde.name, finde.country, finde.logo, finde.slogan, finde.head_quaters, finde.website, finde.established]
     let inputmobail
     let h1mobil = document.createElement('h3')
     let buton = document.createElement('button')
@@ -108,6 +106,11 @@ const createmobile = (input, text) => {
         inputmobail.setAttribute('type', 'text')
         inputmobail.setAttribute('placeholder', arr_plesholder_for_inp[i])
         inputmobail.setAttribute('name', arr_name_for_inp[i])
+        
+        if (cen = 'cenche') {
+            inputmobail.value = arr_sad[i]
+        }
+
         form.append(inputmobail)
     }
     form.append(buton)
@@ -127,7 +130,7 @@ const closeModal = () => {
     }, 100);
 }
 
-const showModal = (width, haight, input, text) => {
+const showModal = (width, haight, input, text, finde) => {
     bg_modal.style.display = "block"
     course_modal.style.display = "flex"
     body.style.overflow = 'hidden'
@@ -138,10 +141,10 @@ const showModal = (width, haight, input, text) => {
         course_modal.style.opacity = "1"
     }, 100);
 
-    createmobile(input, text)
+    createmobile(input, text, cen, finde)
 }
 
-const anim = () => {
+const anim = (cen, finde) => {
     let butns = document.querySelectorAll('button[data-but]')
     for (const but of butns) {
         but.onclick = () => {
@@ -149,7 +152,7 @@ const anim = () => {
             let width = but.getAttribute('data-with')
             let haight = but.getAttribute('data-haight')
             let input = but.getAttribute('data-input')
-            showModal(width, haight, input, valueinnrTEXT)
+            showModal(width, haight, input, valueinnrTEXT, cen, finde)
         }
     }
 }
@@ -176,24 +179,6 @@ const REGEX = () => {
                         console.log(error);
                     });
             }
-        }
-    }
-}
-const serch_item = (el) => {
-    let local = window.location
-    let title = document.querySelector('title')
-    local = local.href.split('#')
-    main.innerHTML = ' '
-    console.log(local);
-    for (const item of zar21) {
-        if (`#${item.id}` == local[local.length - 1]) {
-            createarr(zar21)
-            title.innerText = item.name
-            el.setAttribute('href', `./index.html`)
-            local.pop()
-            return
-        } else if ('https://cool-dragon-cdc744.netlify.app/' == local[local.length - 1]) {
-            createarr(zar21)
         }
     }
 }
