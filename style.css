@@ -156,6 +156,11 @@ header button {
     text-align: center;
 }
 
+.course-modal-mobil form div {
+    display: flex;
+    justify-content: space-between;
+}
+
 .course-modal-mobil form input {
     width: 100%;
     padding: 19px 25px;
@@ -206,9 +211,17 @@ header button {
     border-radius: 10px;
     margin-left: 10px;
 }
+
 .bloke input {
     background: #E7E7E7;
     padding: 10px 10px;
     border-radius: 10px;
 
+}
+
+form h2 {
+    font-style: normal;
+    font-size: 20px;
+    line-height: 141.02%;
+    width: 252px;
 }

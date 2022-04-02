@@ -4,6 +4,7 @@ const searchs = (arr, el) => {
     let re = new RegExp(inputs + '.+$', 'i');
     patients = patients.filter(function (e, i, a) {
         e = e.established
+        console.log(e);
         if (e == undefined) {
             return
         }
