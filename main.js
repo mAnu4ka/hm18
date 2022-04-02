@@ -45,7 +45,7 @@ input.onkeyup = () => {
 
 const createarr = (arr, notfake) => {
     main.innerHTML = ' '
-
+    anim_scrol()
     if (notfake == 'notfake') {
         zar21 = arr.filter(n => n !== '')
     } else {
@@ -209,5 +209,31 @@ const REGEX = () => {
     }
 }
 
+let anim_1 = document.querySelector('.first')
+let anim_2 = document.querySelector('.second')
+let anim_heder = document.querySelector('.dlaer_aka_anim')
+let heder = document.querySelector('header')
+
+const anim_scrol = () => {
+    let caunt = 1.00
+    let nter = setInterval(() => {
+        caunt = caunt - 0.1
+        if (caunt < 0) {
+            clearInterval(nter)
+            anim_1.style.display = 'none'
+            anim_2.style.display = 'none'
+            anim_heder.style.display = 'none'
+            body.classList.remove('anim')
+            body.style.opacity = 1
+            heder.style.display = 'flex'
+        }else{
+            console.log(caunt);
+            anim_1.style.opacity = caunt
+            anim_2.style.opacity = caunt
+            anim_heder.style.opacity = caunt
+            body.style.opacity = caunt
+        }
+    }, 100)
+}
 
 anim('don_t')
